@@ -31,28 +31,29 @@
   </head>
 
   <body>
-    <header></header>
+    <!-- Header with Logo  -->
+    <header>
+      <h1 class="text-center logo">SparkCart</h1>
+    </header>
+
     <main class="main">
-      <div class="search-field">
-        <div class="search-box">
-          <input id="input-field" class="search-field" type="text" />
-          <button
-            type="button"
-            class="btn btn-primary search-button"
-            data-toggle="button"
-            aria-pressed="false"
-            autocomplete="off"
-            id="search-btn"
-            onclick="loadProducts()"
-          >
-            Search
-          </button>
-        </div>
+      <!-- Search option -->
+      <div class="search">
+        <input
+          type="text"
+          class="searchTerm"
+          placeholder="What are you looking for?"
+        />
+        <button type="submit" class="searchButton">
+          <i class="fa fa-search"></i>
+        </button>
       </div>
+
       <div class="row">
         <div class="col-md-9 col-lg-9 col-sm-7">
-          <div id="all-products" class=""></div>
+          <div id="all-products" class="card-deck"></div>
         </div>
+        <!-- cart total -->
         <div class="col-md-3 col-lg-3 col-sm-5 cart-main">
           <div class="cart" id="my-cart">
             <table class="table">

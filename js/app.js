@@ -12,17 +12,23 @@ const showProducts = (products) => {
     const image = product.image;
     const div = document.createElement("div");
     div.classList.add("product");
-    div.innerHTML = `<div class="single-product">
-      <div>
-    <img class="product-image" src=${image}></img>
+    div.innerHTML = `
+    <div class="card h-100 single-product">
+      <img src="${image}" class="card-img-top product-image" alt="...">
+      <div class="card-body">
+        <h3 class="card-title">${product.title.slice(0, 36)}</h3>
+        <p class="card-text font-weight-bold">Category: ${product.category}</p>
+        <h2 class="card-text price">$${product.price}</h2>
+        <h4 class="card-text "> <img src="images/rating.png" alt="Rating image"> ${product.rating.rate}</h4>
+        <h4 class="card-text"> Reviews: ${product.rating.count}</h4>
+        <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success ">Add to cart</button>
+      <button id="details-btn" class=" buy-now btn btn-danger ">Details</button></div>
       </div>
-      <h3>${product.title}</h3>
-      <p>Category: ${product.category}</p>
-      <h2>Price: $ ${product.price}</h2>
-      <p>Rating: ${product.rating.rate}</p>
-      <p>Count: ${product.rating.count}</p>
-      <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
-      <button id="details-btn" class="btn btn-danger">Details</button></div>
+    </div>
+  </div>
+    
+    
+    
       `;
     document.getElementById("all-products").appendChild(div);
   }
@@ -47,12 +53,12 @@ const updatePrice = (id, value) => {
   const convertedOldPrice = getInputValue(id);
   const convertPrice = parseFloat(value);
   const total = convertedOldPrice + convertPrice;
-  document.getElementById(id).innerText = total;
+  document.getElementById(id).innerText = total.toFixed(2);
 };
 
 // set innerText function
 const setInnerText = (id, value) => {
-  document.getElementById(id).innerText = value;
+  document.getElementById(id).innerText = value.toFixed(2);
 };
 
 // update delivery charge and total Tax
